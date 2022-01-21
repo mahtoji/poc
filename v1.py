@@ -18,4 +18,16 @@ res = connection.execute(select_st)
 for _row in res:
     print(_row)
 
+from sqlalchemy.orm import sessionmaker
+Session = sessionmaker()
+Session.configure(bind=engine)
+session = Session()
+
+rows = session.query(table.c.Org).all()
+for r in rows:
+    print(r)
+
+l = [v for v, in rows]
+
+print(l)
 
