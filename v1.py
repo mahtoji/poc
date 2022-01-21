@@ -31,3 +31,10 @@ l = [v for v, in rows]
 
 print(l)
 
+#Find all columns
+rows = session.query(table.columns[2]).all()
+
+#Find values from all columns
+l = [v for v, in rows]
+
+print(l)
