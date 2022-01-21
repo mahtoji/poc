@@ -32,9 +32,9 @@ l = [v for v, in rows]
 print(l)
 
 #Find all columns
-rows = session.query(table.columns[2]).all()
+for c in table.columns:
+    rows = session.query(c).all()
+    #Find values from all columns
+    l = [v for v, in rows]
+    print(l)
 
-#Find values from all columns
-l = [v for v, in rows]
-
-print(l)
