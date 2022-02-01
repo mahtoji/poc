@@ -18,7 +18,7 @@ import viewform
 app = Flask(__name__)
 app.config['WTF_CSRF_ENABLED'] = False
 
-@app.route('/')
+@app.route('/', methods=['GET'])
 def sql():
 
     engine = create_engine("shillelagh://")
