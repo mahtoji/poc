@@ -56,7 +56,7 @@ def sql():
     pprint(dir(rf))
     #pprint(vars(rf))
     print("---------------------------------")
-    return render_template('index.html', form=rf, name="JIM")
+    return render_template('table.html', data=table.columns.keys())
 
     select_st = select([table]).where(table.c.Org == "CME")
     res = connection.execute(select_st)
