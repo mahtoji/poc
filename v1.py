@@ -52,7 +52,7 @@ def sql():
         #print(k)
         #rf.newAttr(k)
         setattr(rf, k, StringField("testing"))
-    print("---------------------------------")
+    print("-------------This is rf--------------------")
     pprint(dir(rf))
     #pprint(vars(rf))
     print("---------------------------------")
@@ -60,7 +60,11 @@ def sql():
     select_st = select([table]).where(table.c.Org == "CME")
     res = connection.execute(select_st)
 
+    print("-----------This is res----------------------")
+    #print(res.fetchall())
     print("---------------------------------")
+    return render_template('table.html', headings=table.columns.keys(), data=res.fetchall())
+    print("-----------This is _row in res----------------------")
     for _row in res:
         print(_row)
     print("---------------------------------")
@@ -72,15 +76,15 @@ def sql():
 
     rows = session.query(table.c.Org).all()
     for r in rows:
+        print("-----------This is r----------------------")
         print(r)
+        print("---------------------------------")
 
     l = [v for v, in rows]
 
-    print("---------------------------------")
+    print("------------This is l---------------------")
     print(l)
     print("---------------------------------")
-
-    return render_template('table.html', headings=table.columns.keys(), data=rows)
 
     #Find all columns
     for c in table.columns:
