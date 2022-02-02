@@ -56,13 +56,14 @@ def sql():
     pprint(dir(rf))
     #pprint(vars(rf))
     print("---------------------------------")
-    return render_template('table.html', data=table.columns.keys())
 
     select_st = select([table]).where(table.c.Org == "CME")
     res = connection.execute(select_st)
 
+    print("---------------------------------")
     for _row in res:
         print(_row)
+    print("---------------------------------")
 
     from sqlalchemy.orm import sessionmaker
     Session = sessionmaker()
@@ -75,7 +76,11 @@ def sql():
 
     l = [v for v, in rows]
 
+    print("---------------------------------")
     print(l)
+    print("---------------------------------")
+
+    return render_template('table.html', headings=table.columns.keys(), data=rows)
 
     #Find all columns
     for c in table.columns:

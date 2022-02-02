@@ -2,13 +2,18 @@
 
 <body>
 	<table>
-		<tbody>
-		{% for item in data %}
-			<tr>
-			    <td>{{item}}</td>
-			</tr>
+		<tr>
+			{% for  header in headings %}
+			<th>{{ header }}</th>
+			{% endfor %}
+		</tr>
+		{% for  row in data %}
+		<tr>
+			{% for cell in row %}
+			<td> {{ cell }} </td>
+			{% endfor %}
+		</tr>
 		{% endfor %}
-		<tbody>
 	<table>
 </body>
 
