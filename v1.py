@@ -18,6 +18,12 @@ import viewform
 app = Flask(__name__)
 app.config['WTF_CSRF_ENABLED'] = False
 
+from flask_bootstrap import Bootstrap
+bootstrap = Bootstrap(app)
+
+from flask_moment import Moment
+moment = Moment(app)
+
 @app.route('/', methods=['GET'])
 def sql():
 
@@ -44,12 +50,13 @@ def sql():
         k = k.replace("/", "_")
         k = k.replace("\\", "_")
         #print(k)
-        rf.newAttr(k)
+        #rf.newAttr(k)
+        setattr(rf, k, StringField("testing"))
     print("---------------------------------")
     pprint(dir(rf))
-    pprint(vars(rf))
+    #pprint(vars(rf))
     print("---------------------------------")
-    exit()
+    return render_template('index.html', form=rf, name="JIM")
 
     select_st = select([table]).where(table.c.Org == "CME")
     res = connection.execute(select_st)
@@ -78,4 +85,4 @@ def sql():
         print(l)
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)

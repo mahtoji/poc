@@ -13,8 +13,9 @@ class FinalMeta(type(FlaskForm), type(Base)):
     pass
 
 class RowForm(FlaskForm):
+    name = StringField("What is your name")
     def newAttr(self, attr):
         try:
-            setattr(self, attr, attr)
+            setattr(self, attr, StringField("TEXT"))
         except Exception as e:
             pass
